@@ -1,0 +1,37 @@
+<form action="" method="GET">
+   <input type="search" name="search">
+   <button type="submit">Search</button>
+</form>
+
+from django.core.paginator import Paginator
+
+def get_all(request):
+   obj=A.objects.all()
+   paginator=Paginator(obj,3)
+   page=request.GET.get('page',None)
+   if not page:
+      page=1
+   obj=paginator.get_page(page)
+   return render(request,template,{'obj':obj})
+
+Venv:
+Install 
+pip install virtualenv
+
+command:
+virtualenv env
+virtualenv env
+cd env
+cd scripts
+activate
+deactivate
+
+
+
+
+
+
+
+
+
+     

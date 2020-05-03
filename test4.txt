@@ -1,0 +1,17 @@
+def search(request):
+   template=''
+   obj=Test.objects.all()
+   param=request.GET.get('param',None)
+   if param:
+      obj=obj.filter(xx__icontains=param)
+      paginator=Paginator(obj,3)
+      page=request.GET.get('page',None)
+      if not page:
+         page=1
+      obj=paginator.page(page)
+      return render(request,template,{'obj':obj})
+
+<form action='' method="GET">
+   <input type="search" name="search">
+   <button type="submit">Search</button>
+</form>

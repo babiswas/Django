@@ -1,0 +1,31 @@
+<form method="POST" action=''>
+   <label for="str1">Test</label>
+   <input type="text" name="str1" value="str2" id="xyz">
+   <input type="submit" value="submit">
+</form>
+1.name
+2.type
+3.id 
+4.value
+
+type
+1.text
+2.submit
+3.email
+4.password
+5.radio
+
+target
+1._self
+2._blank
+3._parent
+4._top
+
+page adress field.
+
+Default width of input field is 20 characters.
+
+GET has size limitations
+POST has no size limitations
+
+

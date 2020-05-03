@@ -1,0 +1,56 @@
+Django form v/s ModelForm
+
+from django import forms
+1.forms.ModelForm
+2.forms.Form
+
+
+Differences and simillarities between forms.ModelForm and forms.Form:
+
+>forms.Form is manually configured by the user.
+>forms.ModelForm is automatically configured.
+
+from django import forms
+class ContactForm(forms.Form):
+   subject=forms.CharField(max_length=100)
+   message=forms.CharField()
+   sender=forms.EmailField()
+   cc_myself=forms.BooleanField(required=False)
+
+from django.forms import ModelForm
+from .import models
+
+class ArticleForm(ModelForm):
+   class Meta:
+      model=models.Article
+
+This form automatically has all the same field type as Article.
+Modelform has methods that deal with saving of the underlying model.
+
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+
+class RegisterForm(UserCreationForm):
+     first_name=forms.CharField(max_length=30)
+     last_name=forms.CharField(max_length=30)
+     email=forms.CharField(max_length=75)
+
+     class Meta(UserCreationForm.Meta):
+          fields=('username','first_name','last_name','email')
+
+
+ModelForm in Django:
+How to implement __init__ method in django ModelForm customization.
+
+class XForm(forms.ModelForm):
+    class Meta:
+       model=XModel
+       fields=['field1','field2','field3']
+
+    def __init__(self,*args,**kwargs):
+        key=kwargs.pop('key',None)
+        super(XForm,self).__init__(*args,**kwargs):
+        if key:
+           #process key
+
+    

@@ -1,0 +1,43 @@
+HTML forms:
+<input type='' value=''>
+Value type takes
+1.password
+2.text
+3.submit
+
+Django Form http method:
+1.GET
+2.POST
+
+<form method='POST' action="/your-name/">
+{% csrf_token %}
+{{form.as_p}}
+<input type="submit" value="submit">
+</form>
+
+is_valid() validate the input data.
+
+<form method='POST/GET' action='/your/name/'>
+{%csrf_token%}
+{{form.as_p}}
+<input type='submit' value='submit'>
+</form>
+
+django.forms.Form
+django.forms.ModelForm
+BaseForm class
+
+from django import forms
+
+class ContactForm(forms.Form):
+   subject=forms.CharField(max_length=100)
+   message=forms.CharField(widget=forms.Textarea)
+   sender=forms.EmailField()
+   cc_myself=forms.BooleanField(required=False)
+
+link:https://docs.djangoproject.com/en/3.0/topics/forms/
+
+
+
+
+

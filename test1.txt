@@ -1,0 +1,11 @@
+https://stackoverflow.com/questions/5453503/how-to-efficiently-initial-data-in-django-forms-form
+https://stackoverflow.com/questions/50041919/django-testform-object-has-no-attribute-fields
+
+
+Usergroup:
+https://stackoverflow.com/questions/51250903/how-to-assign-group-to-user-from-a-registration-form-for-user-in-django
+https://www.youtube.com/watch?v=eBsc65jTKvw
+
+
+Template tags:
+https://docs.djangoproject.com/en/3.0/ref/templates/builtins/

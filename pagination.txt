@@ -1,0 +1,20 @@
+from django.core.paginator import Paginator
+
+
+def get_books(request):
+    books=Book.objects.all()
+    paginator=Paginator(books,4)
+    page=request.GET.get('page')
+    book_obj=paginator.get_page(page)
+    return render(request,template,{'book_obj':book_obj})
+
+
+{% if book_obj.has_previous %}
+   <a href="{{book_obj.previous_page_number}}">Previous</a>
+   <a href="?page=1">First</a>
+{% endif %}
+
+{% if book_obj.has_next %}
+    <a href="{{book_obj.next_page_number}}">Previous</a>
+   <a href="?pag={{book_obj.num_pages}}">Last</a>
+{% endif %}

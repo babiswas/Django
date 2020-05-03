@@ -1,0 +1,97 @@
+from django.db import models
+
+class Movie(models.Model):
+    name=models.CharField(max_length=200)
+    rating=models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
+django-admin startproject test
+python manage.py startapp new
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser
+
+from django.contrib import admin
+from .models import Movie
+
+admin.site.register(Movie)
+
+from django.contrib import admin
+from django.shortcuts import render
+from django.shortcuts import redirect
+from django.core import paginator
+
+def movie_list(request):
+   obj=Movie.objects.all()
+   paginator=Paginator(obj,3)
+   page=request.GET.get('page',None)
+   if not page:
+      page=1
+   obj=paginator.get_page(page)
+   return render(request,template,{'obj':obj})
+
+{% extends '../base.html %}
+{% block content %}
+{% for movie in obj %}
+   <h1>{{movie.name}}</h1>
+{% endfor %}
+{% endblock %}
+
+from django.urls import path,include
+from . import views
+
+app_name='Movie'
+urlpatterns=[
+   path('movielist/',views.movie_list,name='movielist')
+]
+
+from django.core import paginator
+
+{% if obj.has_previous %}
+  <a href="?page=1">First</a>
+  <a href="?page={{obj.previous_page_number}}">Previous</a>
+{% endif %}
+    Page:{{obj.number}} of {{obj.num_pages}}
+{% if obj.has_next %}
+  <a href="?page={{obj.next_page_number}}">Next</a>
+  <a href="?page={{obj.num_pages}}">Last</a>
+{% endif %}
+
+
+from django.core import Paginator
+request.GET.get(queryparameter,None)
+
+1.obj.has_previous
+2.obj.has_next
+3.obj.previous_page_number
+4.obj.next_page_number
+5.obj.paginator.num_pages
+	
+
+#html skeleton for search
+<form action='' method='GET'>
+  <input type='search' name='search'>
+</form>
+
+def movie_list(request):
+   obj=Movie.objects.all()
+   str=request.GET.get('str',None)
+   if str:
+      obj=obj.filter(param_icontains=str)
+   paginator=Paginator(obj,2)
+   page=request.GET.get('page',None)
+   if page:
+      obj=paginator.get_page(page)
+   return render(request,template,{'obj':obj})
+
+
+
+
+
+
+
+
+
+    
